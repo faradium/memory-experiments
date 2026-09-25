@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "faradium-bench"
+version = "0.1.0"
+description = "Benchmark harness for cross-session memory research"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = ["benchmark", "memory", "agent", "claude-code", "openrouter", "faradium"]
+dependencies = ["claude-agent-sdk>=0.1", "python-dotenv>=1.0"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.16.9",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.hatch.build.targets.wheel]
+packages = ["faradium_bench"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
